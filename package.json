@@ -1,0 +1,24 @@
+{
+  "name": "algo-tracker",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "start": "concurrently \"npm:start:*\"",
+    "dev": "concurrently \"npm:dev:*\"",
+    "start:backend": "cd packages/backend && npm start",
+    "dev:backend": "cd packages/backend && npm run dev",
+    "start:frontend": "cd packages/frontend && npm start",
+    "dev:frontend": "cd packages/frontend && npm run dev",
+    "test": "cd packages/backend && npm test"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}

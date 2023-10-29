@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "outDir": "./dist",
+      "allowJs": false,
+      "esModuleInterop": true,
+      "types": ["jest"],
+    },
+    "exclude": ["node_modules", "jest.config.js"],
+    "include": [
+      "src/**/*.ts"
+   ],
+} 
