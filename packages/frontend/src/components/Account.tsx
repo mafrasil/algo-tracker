@@ -25,7 +25,7 @@ const Account = () => {
                 </div>
                 <nav className='flex flex-col lg:flex-row justify-center gap-y-6 gap-x-12'>
                     <p className='flex flex-col font-bold'>Test Net dispenser: <a className='hover:underline font-normal' href="https://bank.testnet.algorand.network/" target='_blank'>https://bank.testnet.algorand.network/</a></p>
-                    <p className='flex flex-col font-bold'>Algorand Testnet Explorer: <a className='hover:underline font-normal' href="https://testnet.algoexplorer.io/ target='_blank'">https://testnet.algoexplorer.io/</a></p>
+                    <p className='flex flex-col font-bold'>Algorand Testnet Explorer: <a className='hover:underline font-normal' href="https://testnet.algoexplorer.io/" target='_blank'>https://testnet.algoexplorer.io/</a></p>
                 </nav>
             </div>            
 
