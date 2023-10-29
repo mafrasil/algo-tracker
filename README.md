@@ -2,6 +2,10 @@
 
 Algo Tracker is a monorepo containing a backend service (API) and a frontend application for tracking Algorand addresses and their activities.
 
+Preview:
+- Api - https://algotracker-6e505635273e.herokuapp.com/
+- App - https://algo-tracker-frontend.vercel.app/
+
 ## Packages
 This monorepo contains the following packages:
 
