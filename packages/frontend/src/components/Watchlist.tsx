@@ -24,6 +24,11 @@ const fetcher = async (
     updated: string;
   };
 
+  type ItemAddressProps = {
+    item: Item;
+    removeAddress: (address: string) => void;
+  };
+
 const ItemStatCard = ({ value, title }: { value: number, title: string }): JSX.Element => {
     return (
         <div className="group relative flex">
@@ -33,11 +38,14 @@ const ItemStatCard = ({ value, title }: { value: number, title: string }): JSX.E
     )
 }
 
-const ItemAddress = (item: Item) => {
+const ItemAddress = ({ item, removeAddress }: ItemAddressProps): JSX.Element => {
     return (
         <>
         <div className="flex flex-col lg:flex-row gap-x-3 lg:items-center py-1">
-            <p>{formatAddress(item.address, 10)}</p>
+            <div className='group flex items-center'>
+                {formatAddress(item.address, 10)}
+                <button className='bg-black hidden hover:bg-white hover:text-black group-hover:inline text-white px-2 text-xs ml-2' onClick={() => removeAddress(item.address)}>Remove</button>
+            </div>
             <span className='ml-auto font-thin'><b>{item.balance / MICROALGO}</b> ALGO</span>
             <div className='hidden lg:flex'>
                 <ItemStatCard value={item.totalAppsOptedIn} title='Apps Opted In' />
@@ -93,13 +101,28 @@ const Watchlist = (): JSX.Element => {
         }
       }
     };
+
+    const removeAddress = async (address: string) => {
+        try {
+            await axios.delete(API_URL + '/api/watchlist', { data: { address } })
+            mutate(API_URL + '/api/watchlist');
+        } catch (error: unknown) {
+            if (axios.isAxiosError(error)) {
+                toast.error(error.response?.data.error || 'Something went wrong');
+            } else if (error instanceof Error) {
+                toast.error(error.message || 'Something went wrong');
+            } else {
+                toast.error('Something went wrong');
+            }
+        }
+    }
     
     return (
         <div className="bg-purple p-8">
             <div className="">
                 <h2 className="text-2xl font-bold">Watchlist ({data?.length || 0})</h2>
                 {!data || data.length === 0 ? <p>No items yet</p> : data.map((item: Item) => (
-                    <ItemAddress key={item.address} {...item} />
+                    <ItemAddress key={item.address} item={item} removeAddress={removeAddress} />
                 ))}
             </div>
             <form className="flex mt-4 justify-between items-center relative">
