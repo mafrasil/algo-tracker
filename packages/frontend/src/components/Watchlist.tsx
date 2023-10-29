@@ -27,8 +27,8 @@ const fetcher = async (
 const ItemStatCard = ({ value, title }: { value: number, title: string }): JSX.Element => {
     return (
         <div className="group relative flex">
-        <span className='bg-white text-purple px-1'>{value}</span>
-        <span className='hidden absolute -top-8 bg-black p-1 whitespace-nowrap group-hover:block transform -translate-x-1/2 left-1/2'>{title}</span>
+            <span className='bg-white text-purple px-1'>{value}</span>
+            <span className='hidden absolute -top-8 bg-black p-1 whitespace-nowrap group-hover:block transform -translate-x-1/2 left-1/2'>{title}</span>
         </div>
     )
 }
@@ -36,14 +36,14 @@ const ItemStatCard = ({ value, title }: { value: number, title: string }): JSX.E
 const ItemAddress = (item: Item) => {
     return (
         <>
-        <div className="flex gap-x-3 items-center py-1">
+        <div className="flex flex-col lg:flex-row gap-x-3 lg:items-center py-1">
             <p>{formatAddress(item.address, 10)}</p>
             <span className='ml-auto font-thin'><b>{item.balance / MICROALGO}</b> ALGO</span>
-            <div className='flex'>
-            <ItemStatCard value={item.totalAppsOptedIn} title='Apps Opted In' />
-            <ItemStatCard value={item.totalAssetsOptedIn} title='Assets Opted In' />
-            <ItemStatCard value={item.totalCreatedApps} title='Apps Created' />
-            <ItemStatCard value={item.totalCreatedAssets} title='Assets Created' />
+            <div className='hidden lg:flex'>
+                <ItemStatCard value={item.totalAppsOptedIn} title='Apps Opted In' />
+                <ItemStatCard value={item.totalAssetsOptedIn} title='Assets Opted In' />
+                <ItemStatCard value={item.totalCreatedApps} title='Apps Created' />
+                <ItemStatCard value={item.totalCreatedAssets} title='Assets Created' />
             </div>
         </div>
         </>
