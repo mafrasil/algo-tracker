@@ -97,13 +97,14 @@ const Watchlist = (): JSX.Element => {
     return (
         <div className="bg-purple p-8">
             <div className="">
-            {data && data.map((item: Item) => (
-                <ItemAddress key={item.address} {...item} />
-            ))}
+                <h2 className="text-2xl font-bold">Watchlist ({data?.length || 0})</h2>
+                {!data || data.length === 0 ? <p>No items yet</p> : data.map((item: Item) => (
+                    <ItemAddress key={item.address} {...item} />
+                ))}
             </div>
             <form className="flex mt-4 justify-between items-center relative">
-                <input type="text" name="address" className="w-full bg-transparent placeholder:text-white border-2 p-3" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
-                <button type="submit" className="absolute right-2 bg-black px-4 py-1" onClick={addAddress}>Add</button>
+                <input type="text" name="address" className="w-full bg-transparent focus:border-black focus:outline-none duration-300 placeholder:text-white border-2 p-3" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
+                <button type="submit" className="absolute right-2 hover:bg-white hover:text-black bg-black px-4 py-1" onClick={addAddress}>Add</button>
             </form>
         </div>
     )

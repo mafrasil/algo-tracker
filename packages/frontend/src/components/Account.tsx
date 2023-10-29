@@ -20,7 +20,7 @@ const Account = () => {
             <p className='text-lg'>Create an account, add it to the watchlist, add some new ALGO and watch it update!</p>
             <p>Test Net dispenser: <a className='hover:underline' href="https://bank.testnet.algorand.network/" target='_blank'>https://bank.testnet.algorand.network/</a></p>
             <div className="flex flex-col">
-            <button className='bg-black p-3 mt-6 text-white' onClick={createAccount}>Create Account</button>
+            <button className='bg-black p-3 mt-6 text-white hover:bg-white hover:text-black' onClick={createAccount}>Create Account</button>
             {account && (
                 <div>
                     <p className='text-center mt-3'>{account.addr}</p>
