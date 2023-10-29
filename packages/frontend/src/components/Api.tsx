@@ -12,7 +12,7 @@ const ApiItem = ({ method, path, params, description }: ApiItemProps): JSX.Eleme
         <li className="flex lg:flex-row flex-col lg:gap-x-8">
             <code><span className='bg-pink-700 px-1'>{method}</span> {path}</code>
             <p>{description}</p>
-            {params && <span className='text-sm text-teal-700 lg:ml-2'>params: {params}</span>}
+            {params && <span className='text-sm text-blue lg:ml-2'>params: {params}</span>}
         </li>
     )
 }
